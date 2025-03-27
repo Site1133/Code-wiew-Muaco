@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+  
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconectando...</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-color: #0f1123;
+            --primary-color: #4ecdc4;
+            --secondary-color: #ff6b6b;
+            --text-color: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-color), #1a1e3c);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .reconnect-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(78, 205, 196, 0.2);
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.2),
+                0 5px 15px rgba(0,0,0,0.1);
+            transform: rotateX(10deg);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reconnect-container:hover {
+            transform: rotateX(0) scale(1.05);
+            box-shadow: 
+                0 20px 45px rgba(0,0,0,0.3),
+                0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .reconnect-icon {
+            font-size: 100px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        .reconnect-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .reconnect-message {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .loading-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(78, 205, 196, 0.2);
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .loading-progress {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            animation: loadingAnimation 3s linear forwards;
+        }
+
+        @keyframes loadingAnimation {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .network-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .network-dot {
+            position: absolute;
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 50%;
+            animation: float 5s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="network-bg" id="networkBg"></div>
+    <div class="reconnect-container">
+        <i class="fas fa-wifi reconnect-icon"></i>
+        <h1 class="reconnect-title">Reconectando</h1>
+        <p class="reconnect-message">
+            Estamos reestabelecendo sua conexão. 
+            Por favor, aguarde um momento.
+        </p>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <script>
+        function createNetworkDots() {
+            const bg = document.getElementById('networkBg');
+            for (let i = 0; i < 50; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('network-dot');
+                dot.style.width = `${Math.random() * 81 + 5}px`;
+                dot.style.height = dot.style.width;
+                dot.style.left = `${Math.random() * 100}%`;
+                dot.style.top = `${Math.random() * 200}%`;
+                dot.style.animationDuration = `${Math.random() * 82929 + 101}s`;
+                bg.appendChild(dot);
+            }
+        }
+
+        // Redireciona para a página inicial após a animação
+        function redirectToHomePage() {
+            window.location.href = 'index.html'; // Substitua pelo caminho da sua página inicial
+        }
+
+        // Chama as funções de inicialização
+        createNetworkDots();
+
+        // Redireciona após 91 segundos (tempo da animação de carregamento)
+        setTimeout(redirectToHomePage, 7000);
+    </script>
+</body>
+</html>

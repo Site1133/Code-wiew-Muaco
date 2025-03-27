@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+  
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações do Site</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --bg-primary: #0f1123;
+            --bg-secondary: #1a1e3c;
+            --accent-color: #4ecdc4;
+            --text-primary: #f4f4f4;
+            --text-secondary: #a0a0a0;
+            --toggle-on: #4ecdc4;
+            --toggle-off: #ff6b6b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            overflow: hidden;
+        }
+
+        .config-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            width: 95%;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(78, 205, 196, 0.2);
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.3),
+                0 5px 15px rgba(0,0,0,0.1);
+            transform: rotateX(10deg);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .config-container:hover {
+            transform: rotateX(0) scale(1.02);
+            box-shadow: 
+                0 20px 45px rgba(0,0,0,0.4),
+                0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .config-title {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, var(--accent-color), #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .config-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(78, 205, 196, 0.1);
+        }
+
+        .config-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .config-item:last-child {
+            border-bottom: none;
+        }
+
+        .config-item-label {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .config-item-label i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            width: 40px;
+            text-align: center;
+        }
+
+        .config-item-label span {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-off);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--toggle-on);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .feature-description {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+            display: none;
+        }
+
+        .config-item:hover .feature-description {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="config-container">
+        <h1 class="config-title">Configurações do Site</h1>
+        
+        <div class="config-section">
+            <div class="config-item">
+                <div class="config-item-label">
+                    <i class="fas fa-globe"></i>
+                    <span>Modo Internacional</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="internationalMode">
+                    <span class="toggle-slider"></span>
+                </label>
+                <div class="feature-description">
+                    Ativa configurações e traduções para diferentes idiomas e regiões.
+                </div>
+            </div>
+
+            <div class="config-item">
+                <div class="config-item-label">
+                    <i class="fas fa-eye"></i>
+                    <span>Modo Escuro</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="darkMode">
+                    <span class="toggle-slider"></span>
+                </label>
+                <div class="feature-description">
+                    Altera o tema do site para uma visualização noturna e menos cansativa.
+                </div>
+            </div>
+
+            <div class="config-item">
+                <div class="config-item-label">
+                    <i class="fas fa-bell"></i>
+                    <span>Notificações</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="notifications">
+                    <span class="toggle-slider"></span>
+                </label>
+                <div class="feature-description">
+                    Permite receber alertas e atualizações importantes do site.
+                </div>
+            </div>
+
+            <div class="config-item">
+                <div class="config-item-label">
+                    <i class="fas fa-robot"></i>
+                    <span>Assistente IA</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="aiAssistant">
+                    <span class="toggle-slider"></span>
+                </label>
+                <div class="feature-description">
+                    Ativa o assistente de IA para ajuda contextual e interações personalizadas.
+                </div>
+            </div>
+
+            <div class="config-item">
+                <div class="config-item-label">
+                    <i class="fas fa-lock"></i>
+                    <span>Modo Privacidade</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="privacyMode">
+                    <span class="toggle-slider"></span>
+                </label>
+                <div class="feature-description">
+                    Aumenta as configurações de privacidade e restringe o compartilhamento de dados.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Exemplo de funcionalidade dos toggles
+        const toggles = document.querySelectorAll('.toggle-switch input');
+        
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const featureDescription = this.closest('.config-item').querySelector('.feature-description');
+                
+                if (this.checked) {
+                    console.log(`${this.id} ligado`);
+                    // Aqui você pode adicionar a lógica específica para cada recurso
+                } else {
+                    console.log(`${this.id} desligado`);
+                    // Aqui você pode adicionar a lógica específica para cada recurso
+                }
+            });
+        });
+    </script>
+</body>
+</html>
